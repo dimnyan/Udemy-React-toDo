@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import styled from "styled-components";
 
 import Button from "../../UI/Button/Button";
-import "./CourseInput.css";
+// import "./CourseInput.css";
 
 const FormControl = styled.div`
   margin: 0.5rem 0;
@@ -46,7 +46,8 @@ const CourseInput = (props) => {
 
   const formSubmitHandler = (event) => {
     event.preventDefault();
-    if (!isValid) {
+    if (!isValid || enteredValue.trim().length === 0) {
+      setIsValid(false);
       return;
     }
     props.onAddGoal(enteredValue);
